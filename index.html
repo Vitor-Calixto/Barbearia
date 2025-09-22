@@ -37,8 +37,6 @@
           <strong>Horários de funcionamento</strong>
           <p class="muted">Ter — Sex: 09:00 — 19:00<br>Sab: 09:00 — 15:00</p>
           <hr />
-          <strong>Telefone</strong>
-          <p class="muted">(Insira o número do WhatsApp no formulário de agendamento)</p>
         </div>
       </div>
     </section>
@@ -58,14 +56,22 @@
         <p class="muted">* Valores meramente demonstrativos. Atualize conforme necessário.</p>
       </div>
 
-      <div class="card" id="agendamento">
+       <div class="card" id="agendamento">
         <h3>Agendamento</h3>
         <form id="bookingForm" onsubmit="return false;">
           <label for="name">Nome</label>
-          <input id="name" required placeholder="Seu nome" />
-
+          <div style="display:flex;align-items:center;gap:8px">
+            <input id="name" required placeholder="Digite apenas letras (até 40 caracteres)"
+                   maxlength="40"
+                   pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+"
+                   title="Digite apenas letras (até 40 caracteres)"
+                   oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, ''); 
+                            document.getElementById('nameCount').textContent = this.value.length + '/40';" />
+            <!-- <span id="nameCount" class="muted" style="font-size:12px;color:gray">0/40</span> -->
+          </div>
+<!-- 
           <label for="phone">Celular (WhatsApp)</label>
-          <input id="phone" required placeholder="Ex: 5591999999999" />
+          <input id="phone" required placeholder="Ex: 5591999999999" /> -->
 
           <label for="service">Serviço</label>
           <select id="service">
@@ -193,13 +199,13 @@
  async function saveBooking(){
  const booking = {
  name: document.getElementById('name').value.trim(),
- phone: document.getElementById('phone').value.trim(),
+//  phone: document.getElementById('phone').value.trim(),
  service: document.getElementById('service').value,
  date: document.getElementById('date').value,
  time: document.getElementById('time').value,
  note: document.getElementById('note').value.trim(),
  };
- if(!booking.name||!booking.phone||!booking.date||!booking.time){alert('Preencha nome, celular, data e hora.');return}
+ if(!booking.name||!booking.date||!booking.time){alert('Preencha nome, data e hora.');return}
  const res = await fetch(API_URL, {
  method: 'POST',
  headers: { 'Content-Type': 'application/json' },
@@ -228,13 +234,13 @@
 
  function sendToWhatsApp(){
  const name = document.getElementById('name').value.trim();
- const phone = document.getElementById('phone').value.trim();
+//  const phone = document.getElementById('phone').value.trim();
  const service = document.getElementById('service').value;
  const date = document.getElementById('date').value;
  const time = document.getElementById('time').value;
  const note = document.getElementById('note').value.trim();
- if(!name||!phone||!date||!time){alert('Preencha nome, celular, data e hora.');return}
- const text = `Olá, sou ${name} (whatsapp: ${phone}). Gostaria de agendar: ${service} em ${formatDH(date,time)}. Observações: ${note || '-'}.`;
+ if(!name||!date||!time){alert('Preencha nome, data e hora.');return}
+ const text = `Olá, sou ${name} . Gostaria de agendar: ${service} em ${formatDH(date,time)}. Observações: ${note || '-'}.`;
  const url = `https://wa.me/${TARGET_WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
  window.open(url,'_blank');
  }
