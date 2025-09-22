@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barbearia Edésio</title>
+  
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logomark">E</div>
+      <div>
+        <div style="font-size:18px">Barbearia <strong>Edésio</strong></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.8)">Cortes clássicos e modernos — atendimento por agendamento</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Cortes</a>
+      <a href="#agendamento">Agende</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="info">
+        <h1>Bem-vindo à Barbearia Edésio</h1>
+        <p>Profissionalismo, ambiente acolhedor e atenção no corte. Agende seu horário de forma prática — receba confirmação e envie para o WhatsApp.</p>
+        <a class="btn" href="#agendamento">Agende agora</a>
+      </div>
+      <div style="min-width:260px;flex:0 0 360px">
+        <div class="card">
+          <strong>Horários de funcionamento</strong>
+          <p class="muted">Ter — Sex: 09:00 — 19:00<br>Sab: 09:00 — 15:00</p>
+          <hr />
+          <strong>Telefone</strong>
+          <p class="muted">(Insira o número do WhatsApp no formulário de agendamento)</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="card" id="servicos">
+        <h3>Serviços e preços</h3>
+        <div class="services">
+          <ul id="servicesList">
+            <li><span>Corte Tradicional</span><span>R$ 45</span></li>
+            <li><span>Barba Completa</span><span>R$ 30</span></li>
+            <li><span>Corte + Barba</span><span>R$ 70</span></li>
+            <li><span>Degradê</span><span>R$ 55</span></li>
+            <li><span>Design de Barba</span><span>R$ 40</span></li>
+          </ul>
+        </div>
+        <p class="muted">* Valores meramente demonstrativos. Atualize conforme necessário.</p>
+      </div>
+
+      <div class="card" id="agendamento">
+        <h3>Agendamento</h3>
+        <form id="bookingForm" onsubmit="return false;">
+          <label for="name">Nome</label>
+          <input id="name" required placeholder="Seu nome" />
+
+          <label for="phone">Celular (WhatsApp)</label>
+          <input id="phone" required placeholder="Ex: 5591999999999" />
+
+          <label for="service">Serviço</label>
+          <select id="service">
+            <option value="Corte Tradicional">Corte Tradicional</option>
+            <option value="Barba Completa">Barba Completa</option>
+            <option value="Corte + Barba">Corte + Barba</option>
+            <option value="Degradê">Degradê</option>
+            <option value="Design de Barba">Design de Barba</option>
+          </select>
+
+          <div class="small">
+            <div style="flex:1">
+              <label for="date">Data</label>
+              <input id="date" type="date" required />
+            </div>
+            <div style="flex:1">
+              <label for="time">Hora</label>
+              <input id="time" type="time" required />
+            </div>
+          </div>
+
+          <label for="note">Observações (opcional)</label>
+          <input id="note" placeholder="Ex: preferência por máquina 2" />
+
+          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+            <button class="btn" id="saveBtn" onclick="saveBooking()">Salvar</button>
+            <button class="btn" style="background:#4caf50" id="whatsBtn" onclick="sendToWhatsApp()">Enviar por WhatsApp</button>
+            <button class="btn" style="background:#2196f3" onclick="exportPDF()">Exportar PDF</button>
+          </div>
+        </form>
+
+        <h4 style="margin-top:14px">Agenda</h4>
+        <div class="agenda-list card" id="agendaList" style="padding:12px"></div>
+      </div>
+
+      <div class="card" id="galeria">
+        <h3>Galeria de cortes</h3>
+        <div class="gallery" id="gallery">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1000&auto=format&fit=crop" alt="Corte 1" />
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" alt="Corte 2" />
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000&auto=format&fit=crop" alt="Corte 3" />
+        </div>
+        <p class="muted">Use imagens reais do seu espaço ao publicar.</p>
+      </div>
+
+      <div class="card" id="contato">
+        <h3>Contato & Localização</h3>
+        <p class="muted">Endereço: Rua Exemplo, 123 — Bairro — Cidade</p>
+        <p class="muted">Telefone / WhatsApp: insira no formulário de agendamento</p>
+        <div style="margin-top:12px">
+          <strong>Como chegar</strong>
+          <iframe 
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1837.0123413338792!2d-43.1931805451281!3d-22.94931807921764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fe873915cb3%3A0x91042c1ad4bd115e!2sEsta%C3%A7%C3%A3o%201%20do%20Plano%20Inclinado%20do%20Santa%20Marta!5e0!3m2!1spt-BR!2sbr!4v1758551197323!5m2!1spt-BR!2sbr" 
+             class="map-embed" 
+             allowfullscreen="" 
+             loading="lazy" 
+             referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Depoimentos</h3>
+        <p class="muted">"Ótimo atendimento, corte impecável." — João</p>
+        <p class="muted">"Ambiente acolhedor e barbeiros experientes." — Pedro</p>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Barbearia Edésio — Todos os direitos reservados
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const API_URL = "http://localhost:3000/api/bookings";
+    const TARGET_WHATS_NUMBER = "5521966354239"; 
+
+    function formatDH(dateStr, timeStr){
+ const d = new Date(dateStr + 'T' + timeStr);
+ if(isNaN(d)) return dateStr + ' ' + timeStr;
+ return d.toLocaleString('pt-BR', {dateStyle:'short', timeStyle:'short'});
+ }
+
+ async function loadBookings(){
+ try {
+ const res = await fetch(API_URL);
+ if (!res.ok) {
+  console.error("Erro ao carregar agendamentos: Servidor offline ou rota não encontrada.");
+  return [];
+ }
+ return res.json();
+ } catch (error) {
+ console.error("Erro de conexão ao carregar agendamentos.", error);
+ return [];
+ }
+ }
+
+ async function renderAgenda(){
+ const list = await loadBookings();
+ const el = document.getElementById('agendaList');
+ el.innerHTML = '';
+ if(list.length === 0){el.innerHTML = '<p class="muted">Nenhum agendamento encontrado.</p>';return}
+ list.sort((a,b)=> new Date(a.date + 'T' + a.time) - new Date(b.date + 'T' + b.time));
+ list.forEach((b)=>{
+ const div = document.createElement('div');
+ div.className = 'booking';
+ const left = document.createElement('div');
+ left.innerHTML = `<div><strong>${b.name}</strong> — <span class="muted">${b.service}</span></div><div class="muted">${formatDH(b.date,b.time)}</div>`;
+ const right = document.createElement('div');
+ right.style.display='flex';right.style.gap='8px';
+ const wBtn = document.createElement('button');
+ wBtn.className = 'btn';
+ wBtn.textContent = 'WhatsApp';
+ wBtn.onclick = ()=>{openWhatsForBooking(b)};
+ const del = document.createElement('button');
+ del.textContent = 'Excluir';
+ del.onclick = ()=>{ removeBooking(b.id); };
+ right.appendChild(wBtn); right.appendChild(del);
+ div.appendChild(left); div.appendChild(right);
+ el.appendChild(div);
+ });
+ }
+
+ async function saveBooking(){
+ const booking = {
+ name: document.getElementById('name').value.trim(),
+ phone: document.getElementById('phone').value.trim(),
+ service: document.getElementById('service').value,
+ date: document.getElementById('date').value,
+ time: document.getElementById('time').value,
+ note: document.getElementById('note').value.trim(),
+ };
+ if(!booking.name||!booking.phone||!booking.date||!booking.time){alert('Preencha nome, celular, data e hora.');return}
+ const res = await fetch(API_URL, {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(booking)
+ });
+ if(res.ok){
+ alert('Agendamento salvo!');
+ document.getElementById('bookingForm').reset();
+ renderAgenda();
+ } else {
+ alert('Falha ao salvar. Verifique se o servidor está online.')
+ }
+ }
+
+ async function removeBooking(id){
+ if(!confirm('Remover este agendamento?')) return;
+ await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+ renderAgenda();
+ }
+
+ function openWhatsForBooking(b){
+ const text = `Olá, sou ${b.name}. Gostaria de confirmar o agendamento para ${formatDH(b.date,b.time)} - ${b.service}. Observações: ${b.note || '-'}.`;
+ const url = `https://wa.me/${TARGET_WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
+ window.open(url,'_blank');
+ }
+
+ function sendToWhatsApp(){
+ const name = document.getElementById('name').value.trim();
+ const phone = document.getElementById('phone').value.trim();
+ const service = document.getElementById('service').value;
+ const date = document.getElementById('date').value;
+ const time = document.getElementById('time').value;
+ const note = document.getElementById('note').value.trim();
+ if(!name||!phone||!date||!time){alert('Preencha nome, celular, data e hora.');return}
+ const text = `Olá, sou ${name} (whatsapp: ${phone}). Gostaria de agendar: ${service} em ${formatDH(date,time)}. Observações: ${note || '-'}.`;
+ const url = `https://wa.me/${TARGET_WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
+ window.open(url,'_blank');
+ }
+
+ async function exportPDF(){
+ const { jsPDF } = window.jspdf;
+ const doc = new jsPDF();
+ const list = await loadBookings();
+ if(list.length === 0){alert('Nenhum agendamento para exportar.');return}
+ doc.setFontSize(14);
+ doc.text('Agenda Barbearia Edésio', 10, 15);
+ doc.setFontSize(11);
+ let y = 25;
+ list.forEach((b,i)=>{
+ doc.text(`${i+1}. ${b.name} - ${b.service} - ${formatDH(b.date,b.time)} - Tel: ${b.phone}`,10,y);
+ if(b.note) doc.text(`   Obs: ${b.note}`,10,y+5);
+ y+=15;
+ });
+ doc.save('agenda-edesio.pdf');
+ }
+
+ document.getElementById('year').textContent = new Date().getFullYear();
+ renderAgenda();
+  </script>
+</body>
+</html>

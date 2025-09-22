@@ -1,0 +1,212 @@
+/* --- ESTILOS GERAIS E VARIÁVEIS --- */
+:root {
+  --accent: #2b2b2b;
+  --bg: #f7f7f7;
+  --card: #ffffff;
+  --muted: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: #111;
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+header {
+  background: linear-gradient(90deg, #222, #444);
+  color: #fff;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.logomark {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+nav a {
+  color: rgba(255, 255, 255, .9);
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+/* --- CONTEÚDO PRINCIPAL E LAYOUT --- */
+main {
+  max-width: 1100px;
+  margin: 26px auto;
+  padding: 0 18px;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero .info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.hero p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(20, 20, 20, .06);
+}
+
+/* --- COMPONENTES ESPECÍFICOS --- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.services li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.map-embed {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* --- FORMULÁRIO E AGENDA --- */
+form label {
+  display: block;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.small {
+  display: flex;
+  gap: 10px;
+}
+
+.small input {
+  flex: 1;
+}
+
+.agenda-list {
+  max-height: 300px;
+  overflow: auto;
+  margin-top: 12px;
+}
+
+.booking {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* --- RODAPÉ --- */
+footer {
+  margin-top: 28px;
+  background: #111;
+  color: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* --- REGRAS DE RESPONSIVIDADE --- */
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
